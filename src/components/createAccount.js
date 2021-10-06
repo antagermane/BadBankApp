@@ -9,7 +9,7 @@ function CreateAccount(){
   const [password, setPassword] = React.useState('');
   const isEnabladed = fieldsUsed()
   const ctx = React.useContext(UserContext);
-  
+  const [balance, setBalance] = React.useState(0);
 
   function fieldsUsed(){
     return(
@@ -36,7 +36,8 @@ function CreateAccount(){
     if (!validate(name, 'name')) return;
     if (!validate(email, 'email')) return;
     if (!validate(password, 'password')) return;
-    ctx.users.push({name,email,password})
+    setBalance(0)
+    ctx.users.unshift({name,email,password,balance})
     setShow(false);
     setStatus('');
   }
@@ -52,38 +53,32 @@ function CreateAccount(){
 
     
     <div className="card mb-3" style={{maxWidth: "540px", backgroundColor: 'rgb(230, 255, 238'}}>
-      <div class="card-body">
+      <div className="card-body">
         <div style={{color:'red'}}>{status}</div>
         {show ? (
 
-
           <>
-        <h5 class="card-title">Create Account</h5>
+        <h5 className="card-title">Create Account</h5>
         <form>
         <div className="mb-3">
-          <label for="exampleInputName" class="form-label">Name</label>
-          <input type="input" class="form-control" id="name" placeholder="Enter Name" value={name} onChange={e => setName(e.currentTarget.value)}/>
+          <label className="form-label">Name</label>
+          <input type="input" className="form-control" id="name" placeholder="Enter Name" value={name} onChange={e => setName(e.currentTarget.value)}/>
         </div>
 
-
-
         <div className="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email Address</label>
-          <input type="input" class="form-control" id="email" placeholder="Enter Email" value={email} onChange={e => setEmail(e.currentTarget.value)}/>
+          <label className="form-label">Email Address</label>
+          <input type="input" className="form-control" id="email" placeholder="Enter Email" value={email} onChange={e => setEmail(e.currentTarget.value)}/>
         </div>
 
-
-
-
         <div className="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="input" class="form-control" id="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.currentTarget.value)}/>
+          <label className="form-label">Password</label>
+          <input type="input" className="form-control" id="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.currentTarget.value)}/>
         </div>
 
           {isEnabladed ?
-          (<button type="submit" class="btn btn-light" onClick={handleCreate} >Create Account</button>)
+          (<button type="submit" className="btn btn-light" onClick={handleCreate} >Create Account</button>)
           :
-          (<button type="submit" class="btn btn-light" onClick={handleCreate} disabled>Create Account</button>)
+          (<button type="submit" className="btn btn-light" onClick={handleCreate} disabled>Create Account</button>)
           }
 
         </form>

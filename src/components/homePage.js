@@ -5,7 +5,7 @@ function Home(){
   return (
     <>
     <div className="card mb-3" style={{maxWidth: "540px", backgroundColor: 'rgb(230, 255, 238'}}>
-      <div class="card-body">
+      <div className="card-body">
         <div className="row g-0">
           <div className="col-md-4">
             <img src={bank} className="img-fluid rounded-start" alt="Bad Bank Logo"/>
